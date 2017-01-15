@@ -12,6 +12,9 @@
 (defn add-home [name]
       (.addHome HomeKit name))
 
+(defn remove-home [name]
+      (.removeHome HomeKit name))
+
 (defn homes []
   [])
 

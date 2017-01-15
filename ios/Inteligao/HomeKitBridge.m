@@ -11,6 +11,7 @@
 @interface RCT_EXTERN_MODULE(HomeKit, NSObject)
 
 RCT_EXTERN_METHOD(addHome:(NSString *)name)
+RCT_EXTERN_METHOD(removeHome:(NSString *)name)
 RCT_EXTERN_METHOD(report)
 
 @end
