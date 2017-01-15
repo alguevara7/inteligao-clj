@@ -10,6 +10,7 @@
 
 @interface RCT_EXTERN_MODULE(HomeKit, NSObject)
 
-RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location)
+RCT_EXTERN_METHOD(addHome:(NSString *)name)
+RCT_EXTERN_METHOD(report)
 
 @end

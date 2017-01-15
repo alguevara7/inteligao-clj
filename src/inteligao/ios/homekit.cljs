@@ -6,8 +6,11 @@
 
 (def HomeKit (.-HomeKit NativeModules))
 
-(defn add-event [title]
-      (.addEvent HomeKit (str title "1") (str title "4")))
+(defn report []
+      (.report HomeKit))
+
+(defn add-home [name]
+      (.addHome HomeKit name))
 
 (defn homes []
   [])

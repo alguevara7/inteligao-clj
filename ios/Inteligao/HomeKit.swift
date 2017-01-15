@@ -10,13 +10,36 @@ import Foundation
 import HomeKit
 
 @objc(HomeKit)
-class HomeKit: NSObject {
+class HomeKit: NSObject, HMHomeManagerDelegate {
   
-  @objc(addEvent:location:)
-  func addEvent(name: String, location: String) -> Void {
-    // Date is ready to use!
-    let homeManager = HMHomeManager()
-    print(homeManager)
+  var homeManager : HMHomeManager
+  
+  override init() {
+    self.homeManager = HMHomeManager()
+    super.init()
+    self.homeManager.delegate = self
+  }
+  
+  func homeManagerDidUpdateHomes(_ manager: HMHomeManager) {
+    print("started")
+  }
+
+  @objc(addHome:)
+  func addHome(name: String) -> Void {
+    homeManager.addHome(withName: name) { newHome, error in
+      if let error = error {
+        print("error = " + error.localizedDescription)
+        return
+      } else {
+        print("added home" + name)
+      }
+    }
+  }
+  
+  @objc(report)
+  func report() -> Void {
+    print(self.homeManager.homes)
+    print(self.homeManager.primaryHome ?? "No primary home")
   }
   
 }
