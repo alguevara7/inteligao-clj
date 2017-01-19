@@ -17,6 +17,8 @@ class HomeKit: NSObject, HMHomeManagerDelegate {
   var primaryHome : HMHome?
   var homes : [HMHome] = []
   
+  var homesFromClojureMap : [String: HMHome] = [:]
+  
   override init() {
     self.homeManager = HMHomeManager()
     super.init()
@@ -28,6 +30,10 @@ class HomeKit: NSObject, HMHomeManagerDelegate {
     self.primaryHome = self.homeManager.primaryHome
     self.homes = self.homeManager.homes
     print("refreshed");
+  }
+  
+  func homes(name: String) -> Array<Dictionary<String, Any>>? {
+    return nil
   }
   
   func homeManagerDidUpdateHomes(_ manager: HMHomeManager) {
